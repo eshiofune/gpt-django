@@ -1,0 +1,22 @@
+<div style="padding:3em; font-size:14pt;">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea name="text_input" placeholder=" Describe the story you would like" style="width:30em;"></textarea>
+        <br /><br />
+        <input type="file" name="voice_input" accept="audio/*" style="width:30em;">
+        <br /><br />
+        <input type="submit" value="Submit" style="width:8em; height:3em;">
+    </form>
+
+    <p>
+        <strong>{{ user_input }}</strong>
+    </p>
+    {% if image_url %}
+    <p>
+        <img src="{{ image_url }}" alt="Generated Image" style="max-width:80vw; width:30em; height:30em;">
+    </p>
+    {% endif %}
+    {% if generated_story %}
+    <p>{{ generated_story | safe }}</p>
+    {% endif %}
+</div>
